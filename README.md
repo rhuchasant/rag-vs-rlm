@@ -1,26 +1,22 @@
 # RLM vs RAG: Long-Document Exhaustive Extraction
 
-Research comparing **Recursive Language Models (RLM)** with **Retrieval-Augmented Generation (RAG)** on long-document "extract everything" tasks, where the goal is complete coverage rather than localized QA.
+Code and benchmarks for comparing **Retrieval-Augmented Generation (RAG)** with **RLM-style iterative traversal** on long-document tasks that require complete coverage (e.g., "list all section IDs," "enumerate all tabs") rather than localized QA.
 
-## Key Finding
+## Research Question
 
-**Bounded retrieval is structurally mismatched to exhaustive extraction.** RAG (single-pass and multi-pass) shows limited coverage under context limits; iterative traversal with external control flow achieves full enumeration.
+How do bounded-retrieval systems behave on tasks that require full document coverage? This repo implements benchmarks and evaluation to study RAG (single-pass and multi-pass) versus iterative traversal with external control flow.
 
-| Benchmark | Single-Pass RAG | Iterative RAG | RLM (Traversal) |
-|-----------|-----------------|---------------|-----------------|
+## Preliminary Results
+
+Initial experiments across several benchmarks suggest traversal-based approaches achieve higher coverage on exhaustive extraction tasks. See `RESULTS_TABLE.md` for details.
+
+| Benchmark | Single-Pass RAG | Iterative RAG | Traversal |
+|-----------|-----------------|---------------|-----------|
 | Excel 30 tabs (~750k chars) | Context overflow | — | 100% |
 | Legal 587 sections (17 CFR Part 240) | ~2–3% | ~32% | 100% |
 | Synthetic structured extraction | 0% exact | — | 100% |
 
-A **hybrid router** (broad extraction → traversal, targeted QA → RAG) outperforms either approach alone on mixed task sets.
-
-## Hypothesis
-
-For tasks requiring *complete document coverage* (e.g., "list all section IDs," "enumerate all tabs"), RLM-style iterative traversal outperforms RAG because:
-
-- RAG retrieval does not guarantee global coverage under fixed context limits
-- Iterative traversal processes chunks under external control flow and aggregates outside the context window
-- Multi-pass RAG improves recall but still falls far short of deterministic enumeration
+A hybrid router (broad extraction → traversal, targeted QA → RAG) outperforms either approach alone on mixed task sets.
 
 ## Project Structure
 
