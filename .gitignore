@@ -1,0 +1,40 @@
+# Environment
+.env
+venv/
+.venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Results & data
+results/*.json
+results/*.csv
+results/archive/
+benchmarks/*.xlsx
+benchmarks/synthetic_long_docs*.json
+benchmarks/legal_benchmark.json
+benchmarks/legal_benchmark.txt
+benchmarks/data_layout_benchmark.json
+benchmarks/data_layout_benchmark.txt
+!benchmarks/sample_*.txt
+
+# Logs
+*.log
+logs/
+
+# Exploratory
+test_rlm_improvements.py

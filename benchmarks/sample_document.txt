@@ -1,0 +1,46 @@
+# Data Layout Specification Document
+
+## Tab 1: Customer_Data
+File: customer_export.csv
+Columns:
+- customer_id (INT, PK)
+- name (VARCHAR 100)
+- email (VARCHAR 255)
+- created_at (TIMESTAMP)
+- region (VARCHAR 50)
+
+## Tab 2: Order_Data
+File: orders_export.csv
+Columns:
+- order_id (INT, PK)
+- customer_id (INT, FK)
+- order_date (DATE)
+- total_amount (DECIMAL 10,2)
+- status (VARCHAR 20)
+
+## Tab 3: Product_Catalog
+File: products.csv
+Columns:
+- product_id (INT, PK)
+- product_name (VARCHAR 200)
+- category (VARCHAR 50)
+- unit_price (DECIMAL 8,2)
+- stock_quantity (INT)
+
+## Tab 4: Inventory_Log
+File: inventory_log.csv
+Columns:
+- log_id (INT, PK)
+- product_id (INT, FK)
+- warehouse_id (INT)
+- quantity_change (INT)
+- timestamp (TIMESTAMP)
+
+## Tab 5: Shipping_Info
+File: shipping.csv
+Columns:
+- shipment_id (INT, PK)
+- order_id (INT, FK)
+- carrier (VARCHAR 50)
+- tracking_number (VARCHAR 100)
+- estimated_delivery (DATE)

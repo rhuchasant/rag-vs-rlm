@@ -1,0 +1,19 @@
+# RLM vs RAG - Default configuration
+
+rag:
+  embedding_model: "all-MiniLM-L6-v2"
+  chunk_size: 512
+  chunk_overlap: 50
+  top_k: 5
+  llm_model: "gpt-4o-mini"
+  use_semantic_chunking: true
+
+rlm:
+  model: "gpt-4o"
+  recursive_model: "gpt-4o-mini"
+  max_iterations: 20
+
+benchmark:
+  data_layout:
+    num_tabs: 19
+    query: "Extract data file layouts for the entire excel sheet. Include every tab."
